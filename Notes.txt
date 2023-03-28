@@ -1,0 +1,175 @@
+- Make use of the semantic html elements for different parts of the web page.
+<header>
+<nav>
+<main>
+<aside>
+<section>
+<footer>
+
+- whenever we are confused with the roles of the elements by their respresentation. we can make use of
+their roles to use it in our elements
+<header role="banner">
+<div role="navigation">
+<footer role="contentinfo">
+
+- when we have multiple same landmarks like <navs> and multiple mains, we make use of the aria-label
+in order to give a specific meaning and distinguish them.
+
+- <aside> and section tag
+<aside> is something is related to the main content, section is like a separate piece of block which 
+which we keep some part of the content.
+<aside aria-label="share the page"></aside>
+<section aria-label="Newsletter"></section>
+
+- Buttons and Links
+the <button> element should be used for any interaction that performs an action on the current page.
+The <a> element should be used for any interaction that navigates to another view.
+
+clicking "company" opens a drop-down menu. This is the interaction that performs an action on the
+current page. Using <button> here is the correct thing to do. The underlying links, about us, our offerings
+and so on, are correctly coded with <a> elements.
+
+Semantic HTML gives context to screen readers, which read the contents of the page out loud.
+
+Should not use div why?
+- Buttons have more suitable styling by default.
+- A screen reader identifies it as a button.
+- It is focusable
+- it is Clickable.
+
+Links - Links are used to take users from one page to another.For a link to be accessible, remember to
+- use the href attribute to sepcify the link destination.
+- use a proper url in the href attribute. The url can be absolute or relative.
+
+<a href="https://www.google.com">This is a link</a>
+
+=========================================================================================
+
+Accesibility Role, Name and Value
+
+Role - For exmaple just like buttons and links, we are not allowed to use the button in the componnet and 
+we need to make use of the <a> tag then we will specify the role as Button in that.
+Now, the assitive technologies can understand that it is a button.
+
+Name - Whenever we are using the dropdown and the input there will not any distinction between the 
+dropdown and the input. The drop-down will be coded as select which is a correct element for this case,
+But, when we use this name:
+<select name="countryCode">Provide your country</select>
+This cannot be used by assitive technologies / it will not help any users.
+so we should make use of the aria-label
+<select aria-label="country calling code" name="country code">...</select>
+
+Value - In case of components like accordion, whether the accordion is open/closed, This needs to be
+accessible.
+An accordion is a custom component. There is no standard HTML element to use here.
+Each accordion header should be a <button> or role="button", and to tell its closed, we put it as below
+
+<div role="button" aria-expanded="false">Whne do i get Charged for a ride</div>
+
+=========================================================================================
+
+Accessibility color contrast
+
+Text and graphical components on a web page need good contrast so that we can make sure that it is
+perceivable by users. some of users have the reduced vision.
+We measure the contrast between the text/graphics against the background color, this is called the contrast
+ratio.
+Minimum contrast ration should be checked using the contrast ratio and also, and depends like apple
+needs just 4.
+
+Color contrast needs to be updated for the unfocused or foused state and is atleast 3.
+
+=============================================================================================
+
+Accesibility color alone as a meaning
+
+we need to keep the underlined on the link and do not remove them: since they will increase the readability
+of the content:
+============================================================================================
+
+Accesibility Meanigful and Decorative images
+
+Some images are meaningful and some are decorative.Every image must be coded as meanignful or decoartive.
+
+Decorative images:
+If am image is not community for a user to understand the functinality or the content of a web page or app
+it is considered decorative.
+
+The basic way to set an image as decorative is to use an empty alt attribute.
+
+Whenever we have the few icons that can be used like four shortcuts, each has ab illustrative icon
+we use the alt attribute
+
+===================================================================================================
+
+If we have the five links that are combinators of icons and text (Home, feeds, Messaegner, cart)
+Site is not readable , if we remove the icons they are decorative.
+role="img" aria-hidden = "true"
+
+<i class="navbar Icon" role="img" aria-hidden= "true"></i>
+
+if you are using the svg image with the <img>element , you must add an emplty alt attribute.
+SVG images are often inserted inline, using the svg elemnt and use the aria-hidden = "true" will
+make your image decorative.
+
+<svg aria-hidden="true"></svg>
+
+====================================================================================
+Descriptive alt attribute - The alt attribute provides an alt text for an iamge.
+The reason can be a slow connection, an error with the image tile or if the user uses an scrrn reader.
+The alt attribute should properly describe the image or even better.
+
+the methods are same for the background image.
+
+========================================================================================
+
+Accesibility link states
+
+A visited state can help a person with short term memory loss.
+A hover state can reduce the muscle control.
+A focused link can help the kwyboard users to know which link was clicked.
+
+
+Link has many states and below are them:
+- unvisited
+- hover
+- visited
+- active
+- focus
+
+Underline - Links are underlined by default and removing the underline from the link in a body text
+is a bad idea.
+contrast and focus - orange outline has low contrast compared to the white background.
+second, the lack of offset makes the text hard to read.
+they used the css -properties like - outline-color and outline-offset.
+
+
+hover - on hover text we can highlight the color and make the text bold to let the user know what actions
+he is going to perform.
+
+=========================================================================================
+
+Accessibility link text
+An accessible link text is a text that makes sense without any context. A link text should clearly 
+explain what the user is going to do by clicking on that link.
+
+Good Exmaples:
+- FInd out more about the HTML langaugae
+- Read more about how to be haelthy
+- Buy tickets to MARs here
+
+Bad Exmaples
+- Read more
+- Click more
+===========================================================================================
+
+Headings
+
+People are the heading structure to scan the page, and get an understanding to the main content.
+Headings are defined with <h1> to <h6>.
+
+<h1> is used for main headings and <h2> headings, then less important <h3> and so on.
+
+===========================================================================================
+
+
