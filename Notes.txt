@@ -97,7 +97,7 @@ it is considered decorative.
 
 The basic way to set an image as decorative is to use an empty alt attribute.
 
-Whenever we have the few icons that can be used like four shortcuts, each has ab illustrative icon
+Whenever we have the few icons that can be used like four shortcuts, each has a illustrative icon
 we use the alt attribute
 
 ===================================================================================================
@@ -155,7 +155,7 @@ explain what the user is going to do by clicking on that link.
 
 Good Exmaples:
 - FInd out more about the HTML langaugae
-- Read more about how to be haelthy
+- Read more about how to be healthy
 - Buy tickets to MARs here
 
 Bad Exmaples
@@ -170,6 +170,222 @@ Headings are defined with <h1> to <h6>.
 
 <h1> is used for main headings and <h2> headings, then less important <h3> and so on.
 
+
+cometimes it makes semse to add the content just for screen readers, a common practice is to use a css
+class .sr-only , which means the screen reader.
+<h2 class="sr-only">Breifing</h2>
+
 ===========================================================================================
+
+Accesibility visual focus
+
+Visual focus is crucial for all users that rely on keyboard and switch devices.
+
+Visual focus is sometimes called keyboard focus or tab focus.It is the visual indicator on a 
+interactive component that has keyboard focus. This effect is often a border or outline.
+
+Do not remove or hide the focus
+- outline: 0 and overflow:hidden is one of way but we should not remove instead customize or keep 
+the visual focus.
+
+People using the keyboard, screen readers, switch controls and other assitive technologies use
+skip links to reach the main content or other important sections of the page.
+
+===================================================================================
+
+Screen readers are necessary for blind people, important for patially sighted users and helpful for
+people with reading disorders.
+
+A screen reader VoiceOver is built in IOS. The second most popular is TalkBack for Android, 
+and also built in on all android devices.
+
+For desktop and Laptop computers, there is two screen readers, you will be aware of NVDA and JAWS.
+
+<!Doctype html>
+<html lang="en">
+
+The lang attribute chnaged from lang="en" to land="id". Good for screen readers and good for search
+engines.
+
+<a href="https://id.wikipedia.org/wiki/Disleksia" lang="id" hreflang="id">Bahasa Indonesia</a>
+
+Now the screen reader understands that the words "Bahasa Indonesia" should be read in the langaugae
+Bahasa indonesia, not English, It also understands the target page is in Bahasa Indonesia because of the
+hreflang attribute.
+
+=================================================================
+
+Forms elements are mostly used to collect the user data.
+
+Labels are critical for blind users, user with low vision, users with low mobility disabilities and
+users with memory loss. Missing labels will make a form inaccessible for many users.
+
+<label>  tag defines a label for several elements like, <input>, <select> and <textarea>
+
+<label for="customerType"></label>
+<select name="cutomerType" id="cutomerType">
+
+<label> element is useful for screen -reader users, because the screen -reader will read out loud
+the label when the user focus on the input element.
+
+<label> element also helps users who have difficulty clicking on very small regions( such as 
+radio buttons) or checkboxes - because when the user clicks the text within the <label> element,
+it toggles the radio button or checkboxes
+
+The for attribute of the <label> tag should be equal to the id attribute of the <input>
+element to bind them together.
+
+Required Fields:
+Form labels often contain a "*" or the word "required" to indicate that the field is required.
+Both of these methods are fine.
+It is recommnended to add the required and aria-required="true" to the form-control if you use the *.
+
+<label for="email">Your email address <span class="mandatory">*</span></label>
+<input id="email" name="email" required aria-required="true" placeholder="Email" required=""/>
+
+
+=======================================================================================
+
+aria-label
+
+feild without visual labels still needs a label, if you can not use <label>, one otpion is to use
+a aria-label.
+This search field has a placeholder, but no label. A placeholder is not a accessible name.
+
+<input placeholder="Enter search term" aria-label="Enter search term" />
+
+=============================================================================================
+
+The <legend>
+
+Group of form controls, like checkboxes and radio boxes often require a higer level of "label"
+in addition to <label>. This high level label is made with <fieldset> and <legend>
+
+<fieldset>
+<legend>Your Date of birth</legend>
+<label for="dobDay">Day</label>
+<select id="dobday"></select>
+<label for="dobMonth"></label>
+<select for="dobMonth"></select>
+</feildset>
+
+=================================================================================================
+
+The autocomplete attribute makes a form easier and more efficient for all users,
+especially users that are attention deficit, have cognitive impairments, reduced mobility, 
+low vision or blind users.
+
+automcomplete helps the user to autocomplete the form.
+
+<input>
+<textarea>
+<select>
+<form>
+
+<input id="email" automcomplete="email"  name="email" aria-required="true" placeholder="Email" required />
+<select id="dobday" autocomplete="bday-day" aria-required="true" required />
+<select id="doBmonth" autocomplete="bday-Month" aria-required="true" />
+
+
+======================================================================================
+
+An accessible form needs error messages that is perciveble and understandable for people who is color
+blind, who is blind with low-vision and people with limited congnitive abilities.
+
+An accessible error message is:
+- wrritten in text , color and icon can be used, but not alone text and icon to be informative.
+- error messages can be more precise and more understable one's.
+
+<input name="firstName" id="firstName-input" type="text" pattern="[^.]*" />
+<p id="firstName-length-error" role="alert">Your first Name must have atleast two letters and no
+usual characters</p>
+
+The error has the role alert. it would make a screen reader read out the content, even though it is
+not focus.
+
+The error message is not associated with the field. this can be done using the aria-describedBy attribute.
+The value of ID of the error message.
+
+<input name="firstName" id="firstNameInput" type="text"  pattern ="[^.]*" aria-describedBy="firstname-length-error"
+ aria-inavlid+"true"/>
+
+Server side validation is more important then the client-side validation.
+
+==================================================================================
+
+Accesibility Zoom
+
+Users with the low vision zoom in on  content to be able to perciev it. Users with the good vision zoom
+in on the content to increase the readability of the content. There are 3 main ways of zooming:
+
+1. screen magnifier
+2. Text zoom
+3. Page zoom
+
+As a developer, there is not that much to think about when it comes to screen magnifier.
+
+The picture shows a 10 times zoomed portion of the samsung website.
+users change the text size without zooming the entire interface.
+
+====================================================================================================
+
+Accesibility Text size
+
+Some people needs larger text in order to perceive letters.
+
+Users must be able to chnage the text size without zooming the entire interface.
+You can set the font-size in settings under Appearnce and cusotmize fonts.
+
+==================================================================================
+
+Browser settings
+
+In your chrome browser, set to font-size to 40 pixels. That is 2.5 times the default size.
+
+===========================================================================
+
+Relative unit
+
+rem instead of px. 18px is set to  1.125 rem, if the base size is 16px.
+
+=================================================================================
+
+People with low vision need to zoom the content in order to use the page.
+
+Page zoom is better than text-zoom
+- Avoid horizontal scrolling
+- All content is available
+- All functinality is available
+- Avoid text in images
+- Provide space for key content.
+
+==========================================================================================
+
+The content is scaling properly. No horizontal scrollbar, chat button oaccupies the big part of the 
+chat window.
+It is not easy to access the buttons for search, cart or menu.
+
+Improvements:
+- Add the minimize button for the chat button. Use the minimised version as the default.
+- Use vector graphics like SVG instead of raster graphics like PNG.
+- show mobile ads only for mobile devices.
+- Avoid the text in images,
+- content should be hidden when the text is zommed.
+
+=============================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
